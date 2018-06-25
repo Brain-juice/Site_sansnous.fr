@@ -11,7 +11,8 @@ if (!empty($_POST)) {
 	} else if ($_POST['type'] == 'register') {
 		$stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
 		$stmt->bindParam(':username', $_POST['username']);
-		$stmt->bindParam(':password', md5($_POST['password']));
+		$encpass = md5($_POST['password']);
+		$stmt->bindParam(':password', $encpass);
 		$stmt->execute();
 	} else if ($_POST['type'] == 'logout') {
 		$_SESSION['user'] = null;
