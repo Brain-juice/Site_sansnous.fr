@@ -1,3 +1,0 @@
-categories one:many services
-services one:many tags
-services one:many service_images
